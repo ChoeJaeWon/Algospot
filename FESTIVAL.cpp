@@ -1,3 +1,7 @@
+// Algorithm: Partial Sum
+// Time Complexity: O(N^2)
+// The number of Calculations: 1000*1000
+
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -14,11 +18,11 @@ int C;
 int N, L;
 int partialSum[MAX_N + 1];
 
-void input() {
+void init() {
 
 }
 
-void init() {
+void input() {
     scanf("%d %d", &N, &L);
 
     int temp;

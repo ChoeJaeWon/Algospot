@@ -1,3 +1,7 @@
+// Algorithm:
+// Time Complexity:
+// The number of Calculations:
+
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -11,11 +15,11 @@ using namespace std;
 const int INF = 987654321;
 int C;
 
-void input() {
+void init() {
 
 }
 
-void init() {
+void input() {
 
 }
 
