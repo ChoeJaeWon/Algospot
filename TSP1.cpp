@@ -40,7 +40,8 @@ void setup() {
 double calMinDist(int visited, int presentCity) {
     double &ret = cache[visited][presentCity];
     if (visited == ((1 << N) - 1)) return 0;
-    if (ret < 0) return ret;
+    if (ret >= -1.0e-7) return ret;
+
 
     ret = INF;
     for (int nextCity = 0; nextCity < N; nextCity++) {
