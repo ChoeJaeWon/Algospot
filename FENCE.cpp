@@ -1,6 +1,6 @@
-// Algorithm: Divide & conquer
-// Time Complexity: O(N)
-// The number of Calculations: 1000
+// Algorithm: Merge & Conquer
+// Time Complexity: O(NlgN) # N: the number of fences
+// The number of Calculations: 20000*lg(20000)
 
 #include <iostream>
 #include <vector>
@@ -9,45 +9,70 @@
 #include <cmath>
 #include <memory.h>
 #include <algorithm>
-#include <string>
 
 using namespace std;
 
 const int INF = 987654321;
 int C;
-string word;
+int N;
+vector<int> fences;
 
 void init() {
-
+    fences.clear();
 }
 
 void input() {
-    cin >> word;
+    scanf("%d", &N);
+
+    int temp;
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &temp);
+        fences.push_back(temp);
+    }
+
 }
 
 void setup() {
 
 }
 
-string flip(int pos) {
-    string quarterWords[4];
 
-    if (word[pos] == 'x') {
-        pos++;
-        quarterWords[0] = flip(pos);
-        for (int i = 1; i < 4; i++) {
-            pos += quarterWords[i - 1].length();
-            quarterWords[i] = flip(pos);
+int maxAreaOfFences(int start, int end) {
+    if (end - start == 0) return fences[start];
+    int mid = (start + end) / 2;
+    int minH = fences[mid];
+    int ret = 0;
+
+    int s = mid;
+    int e = mid;
+    while (s != start || e != end) {
+        if (s == start) {
+            e++;
+            minH = min(minH, fences[e]);
+        } else if (e == end) {
+            s--;
+            minH = min(minH, fences[s]);
+        } else {
+            if (fences[s - 1] > fences[e + 1]) {
+                s--;
+                minH = min(minH, fences[s]);
+            } else {
+                e++;
+                minH = min(minH, fences[e]);
+            }
         }
-        return "x" + quarterWords[2] + quarterWords[3] + quarterWords[0] + quarterWords[1];
-    } else {
-        string ret(1, word[pos]);
-        return ret;
+        ret = max(ret, minH * (e - s + 1));
     }
+
+    ret = max(ret, maxAreaOfFences(mid + 1, end));
+    ret = max(ret, maxAreaOfFences(start, mid));
+
+    return ret;
+
 }
 
 void solve() {
-    cout << flip(0) << endl;
+    printf("%d\n", maxAreaOfFences(0, fences.size() - 1));
 }
 
 int main() {
