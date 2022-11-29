@@ -1,6 +1,6 @@
-// Algorithm:
-// Time Complexity:
-// The number of Calculations:
+// Algorithm: Dynamic Programming
+// Time Complexity: O(NM) # N: the number of bars, M: the number of circles
+// The number of Calculations: 100*100
 
 #include <iostream>
 #include <vector>
