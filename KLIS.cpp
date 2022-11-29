@@ -1,6 +1,6 @@
 // Algorithm: Dynamic Programming
-// Time Complexity: O(N^2) # N: the length of sequence
-// The number of Calculations: 2*500*500
+// Time Complexity: O(N^2 * logN) # N: the length of sequence
+// The number of Calculations: 2*500*500 + 500*500*8
 
 #include <iostream>
 #include <vector>
