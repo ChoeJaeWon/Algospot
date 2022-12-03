@@ -1,6 +1,6 @@
-// Algorithm:
-// Time Complexity:
-// The number of Calculations:
+// Algorithm: Dynamic Programming
+// Time Complexity: O(N^2)
+// The number of Calculations: 50^2 * 2
 
 #include <iostream>
 #include <vector>
